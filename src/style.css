@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 *{
+   font-family: 'Montserrat', sans-serif;
    box-sizing: border-box;
    margin: 0;
    padding: 0;
@@ -66,6 +69,56 @@ body {
    height: 49px;
   }
    
+#logo-small {
+   width: 166px;
+   height: 163px;
+   margin-left: 60px;
+   top: 98px;
+}
+
+form{
+   margin-top: 331px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+label{
+   align-items: left;
+   color: white;
+   display: block;
+   width: 296px;
+   padding-bottom: 5px;
+}
+
+.input{
+   width: 296px;
+   height: 44px;
+   border-style: none;
+   border-radius: 50px;
+   opacity: 0.7;
+   display: block;
+   padding: 5px;
+   
+}
+
+#submitRegister {
+   color: #000000;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 22px;
+   text-align: center;
+   letter-spacing: -0.01em;
+   margin-top: 250px;
+   position: absolute;
+   margin-left: 40px;
+   background: #FEBC00;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+   border-radius: 50px;
+   width: 307px;
+   height: 49px;
+}
+
 
 @media only screen and (min-width:1281px){
 }
