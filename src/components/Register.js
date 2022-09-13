@@ -1,6 +1,15 @@
+import { adduserWithEmail } from '../lib/auth.js';
 import { onNavigate } from '../main.js';
 
 export const Register = () => {
+  //
+
+  /*.addEvenListener(click (e) ) => {
+    e.preventDefault 
+   const email = inputEmail.value
+    const password= inputPassword.value*/
+  
+
   const div = document.createElement('div');
   div.setAttribute('class', 'div');
 
@@ -41,6 +50,29 @@ export const Register = () => {
   labelPass.textContent = 'Password';
   buttonRegister.textContent = 'CREATE ACCOUNT';
   form.append(labelUser, inputUser, labelMail, inputEmail, labelPass, inputPass, buttonRegister);
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    onNavigate('/');
+
+    console.log(inputPass.value);
+
+    adduserWithEmail(inputEmail.value, inputPass.value).then((userCredential) => {
+      // Signed in
+      console.log('siii ya te registraste welcome');
+      const user = userCredential.user;
+      // ...
+    })
+      .catch((error) => {
+        console.log('nel no te puedes registrar');
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      // ..
+      });
+  });
+
+  
+
   div.append(logoImg, form);
 
   return div;
