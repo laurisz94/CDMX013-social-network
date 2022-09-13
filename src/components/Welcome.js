@@ -23,7 +23,7 @@ export const Welcome = () => {
   });
 
   figure.append(logoImg);
-  section.append(figure, buttonLogin, buttonRegister);
+  section.append(figure, buttonRegister, buttonLogin);
 
   return section;
 };

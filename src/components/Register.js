@@ -11,7 +11,7 @@ export const Register = () => {
   
 
   const div = document.createElement('div');
-  div.setAttribute('class', 'div');
+  div.setAttribute('class', 'secondLayout');
 
   const logoImg = document.createElement('img');
   logoImg.src = './images/logo-munchies.png';
