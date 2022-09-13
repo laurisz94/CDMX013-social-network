@@ -5,3 +5,4 @@ import {app} from './config.js';
 const auth = getAuth();
 
 export const adduserWithEmail = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+//return implícito
