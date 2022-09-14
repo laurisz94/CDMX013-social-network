@@ -1,12 +1,14 @@
 // Este es el punto de entrada de tu aplicacion
 import { Welcome } from './components/Welcome.js';
 import { Register } from './components/Register.js';
+import { Feed } from './components/Feed.js';
 
 const root = document.getElementById('root');
 
 const routes = {
   '/': Welcome,
   '/register': Register,
+  '/feed': Feed,
 };
 
 export const onNavigate = (pathname) => {
