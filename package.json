@@ -36,11 +36,6 @@
     "node": ">=16.x"
   },
   "dependencies": {
-    <<<<<<< HEAD
-    "firebase": "^9.9.3"
-=======
-    "firebase": "^9.9.4"
->>>>>>> 1a52acb84edd510cefe411ee192ca46f33080866
-
+  "firebase": "^9.9.4"
   }
 }
