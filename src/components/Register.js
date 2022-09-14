@@ -4,11 +4,10 @@ import { onNavigate } from '../main.js';
 export const Register = () => {
   //
 
-  /*.addEvenListener(click (e) ) => {
-    e.preventDefault 
+  /* .addEvenListener(click (e) ) => {
+    e.preventDefault
    const email = inputEmail.value
-    const password= inputPassword.value*/
-  
+    const password= inputPassword.value */
 
   const div = document.createElement('div');
   div.setAttribute('class', 'secondLayout');
@@ -51,7 +50,7 @@ export const Register = () => {
   buttonRegister.textContent = 'CREATE ACCOUNT';
   form.append(labelUser, inputUser, labelMail, inputEmail, labelPass, inputPass, buttonRegister);
 
-  form.addEventListener('submit', (e)=>{
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     onNavigate('/');
 
@@ -70,8 +69,6 @@ export const Register = () => {
       // ..
       });
   });
-
-  
 
   div.append(logoImg, form);
 
