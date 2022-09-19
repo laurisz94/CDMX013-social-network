@@ -40,6 +40,12 @@ export const Register = () => {
   const message1 = document.createElement('p');
   message1.setAttribute('class', 'message1');
 
+  const message2 = document.createElement('p');
+  message2.setAttribute('class', 'message1');
+
+  const message3 = document.createElement('p');
+  message3.setAttribute('class', 'message1');
+
   const buttonRegister = document.createElement('input');
   buttonRegister.setAttribute('type', 'submit');
   buttonRegister.setAttribute('id', 'submitRegister');
@@ -53,34 +59,43 @@ export const Register = () => {
   labelMail.textContent = 'E-mail';
   labelPass.textContent = 'Password';
   buttonRegister.textContent = 'CREATE ACCOUNT';
-  form.append(labelUser, inputUser, labelMail, inputEmail, message1, labelPass, inputPass, buttonRegister);
+  form.append(labelUser, inputUser, message2, labelMail, inputEmail, message1, labelPass, inputPass, message3, buttonRegister);
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     console.log(inputPass.value);
-
-    adduserWithEmail(inputEmail.value, inputPass.value).then((userCredential) => {
+    if (inputUser.value === '' && inputEmail.value === '' && inputPass.value === '') {
+      message3.textContent = 'Please, fill in all fields';
+    } else if (inputUser.value === '') {
+      message2.textContent = 'Please, enter username';
+    } else {
+      adduserWithEmail(inputEmail.value, inputPass.value).then((userCredential) => {
       // Signed in
-      console.log('siii ya te registraste welcome');
-      const user = userCredential.user;
-      // ...
-      onNavigate('/feed');
-    })
-      .catch((error) => {
-        console.log('nel no te puedes registrar');
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const regexMatch = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(inputEmail.value);
-        if (!regexMatch) {
-          message1.textContent = 'no válido';
-        }
-        if (inputEmail.value === '') {
-          message1.textContent = 'vacío';
-        }
+        console.log('siii ya te registraste welcome');
+        const user = userCredential.user;
+        // ...
+        onNavigate('/feed');
+      })
+        .catch((error) => {
+          console.log('nel no te puedes registrar');
+          const errorCode = error.code;
+          const errorMessage = error.message;
 
-      // ..
-      });
+          const regexMatch = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(inputEmail.value);
+          if (!regexMatch) {
+            message1.textContent = 'no válido';
+          } else if (inputEmail.value === '') {
+            message1.textContent = 'vacío';
+          } else if (inputPass.value === '') {
+            message3.textContent = 'vacío';
+          } else if (inputPass.value.length < 6 && inputPass.value.length > 0) {
+            message3.textContent = 'más de 6';
+          }
+
+          // ..
+        });
+    }
   });
 
   div.append(logoImg, form);
