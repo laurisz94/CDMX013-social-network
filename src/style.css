@@ -12,7 +12,7 @@
    body {
       height: auto;
       width: 100vw;
-      background-image: url(./images/fondo.png);
+      background-image: url(src/images/fondo.png);
       background-size: cover;
       background-repeat: no-repeat;
    }

@@ -15,7 +15,7 @@ export const Register = () => {
   div.setAttribute('class', 'secondLayout');
 
   const logoImg = document.createElement('img');
-  logoImg.src = './images/logo-munchies.png';
+  logoImg.src = 'src/images/logo-munchies.png';
   logoImg.setAttribute('id', 'logo-small');
 
   const form = document.createElement('form');

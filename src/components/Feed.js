@@ -6,7 +6,7 @@ export const Feed = () => {
 
   const figure = document.createElement('figure');
   const logoImg = document.createElement('img');
-  logoImg.src = './images/logo-munchies.png';
+  logoImg.src = 'src/images/logo-munchies.png';
   logoImg.setAttribute('id', 'logo');
 
   figure.append(logoImg);
