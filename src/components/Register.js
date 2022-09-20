@@ -19,16 +19,16 @@ export const Register = () => {
   logoImg.setAttribute('id', 'logo-small');
 
   const form = document.createElement('form');
-  const labelUser = document.createElement('label');
+  // const labelUser = document.createElement('label');
   const labelMail = document.createElement('label');
   const labelPass = document.createElement('label');
 
-  labelUser.setAttribute('class', 'label');
+  // labelUser.setAttribute('class', 'label');
   labelMail.setAttribute('class', 'label');
   labelPass.setAttribute('class', 'label');
 
-  const inputUser = document.createElement('input');
-  inputUser.setAttribute('class', 'input');
+  // const inputUser = document.createElement('input');
+  // inputUser.setAttribute('class', 'input');
 
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('class', 'input');
@@ -51,24 +51,36 @@ export const Register = () => {
   buttonRegister.setAttribute('id', 'submitRegister');
   buttonRegister.setAttribute('value', 'CREATE ACCOUNT');
 
-  inputUser.setAttribute('id', 'inputUser');
+  const containerButtons = document.createElement('section');
+  const textContinue = document.createElement('p');
+  const buttonGoogle = document.createElement('button');
+  const buttonGithub = document.createElement('button');
+
+  containerButtons.setAttribute('id', 'container-btns');
+  textContinue.setAttribute('id', 'txt-continue');
+  buttonGoogle.setAttribute('class', 'white-btns');
+  buttonGithub.setAttribute('class', 'white-btns');
+
+  // inputUser.setAttribute('id', 'inputUser');
   inputEmail.setAttribute('id', 'inputMail');
   inputPass.setAttribute('id', 'inputPassword');
 
-  labelUser.textContent = 'Username';
+  // labelUser.textContent = 'Username';
   labelMail.textContent = 'E-mail';
   labelPass.textContent = 'Password';
   buttonRegister.textContent = 'CREATE ACCOUNT';
-  form.append(labelUser, inputUser, message2, labelMail, inputEmail, message1, labelPass, inputPass, message3, buttonRegister);
+  textContinue.textContent = 'Or continue with';
+  buttonGoogle.textContent = 'Google';
+  buttonGithub.textContent = 'Github';
+  form.append(message2, labelMail, inputEmail, message1, labelPass, inputPass, message3, buttonRegister);
+  containerButtons.append(textContinue, buttonGoogle, buttonGithub);
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     console.log(inputPass.value);
-    if (inputUser.value === '' && inputEmail.value === '' && inputPass.value === '') {
+    if (inputEmail.value === '' && inputPass.value === '') {
       message3.textContent = 'Please, fill in all fields';
-    } else if (inputUser.value === '') {
-      message2.textContent = 'Please, enter username';
     } else {
       adduserWithEmail(inputEmail.value, inputPass.value).then((userCredential) => {
       // Signed in
@@ -98,7 +110,7 @@ export const Register = () => {
     }
   });
 
-  div.append(logoImg, form);
+  div.append(logoImg, form, containerButtons);
 
   return div;
 };
