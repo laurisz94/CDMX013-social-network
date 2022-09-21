@@ -1,6 +1,8 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable max-len */
-import { adduserWithEmail } from '../lib/auth.js';
+import {
+  adduserWithEmail, redirectResult, signInUserWithProviders, providerGithub, providerGoogle, providerTwitter,
+} from '../lib/auth.js';
 import { onNavigate } from '../main.js';
 
 export const Register = () => {
@@ -19,16 +21,16 @@ export const Register = () => {
   logoImg.setAttribute('id', 'logo-small');
 
   const form = document.createElement('form');
-  const labelUser = document.createElement('label');
+  // const labelUser = document.createElement('label');
   const labelMail = document.createElement('label');
   const labelPass = document.createElement('label');
 
-  labelUser.setAttribute('class', 'label');
+  // labelUser.setAttribute('class', 'label');
   labelMail.setAttribute('class', 'label');
   labelPass.setAttribute('class', 'label');
 
-  const inputUser = document.createElement('input');
-  inputUser.setAttribute('class', 'input');
+  // const inputUser = document.createElement('input');
+  // inputUser.setAttribute('class', 'input');
 
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('class', 'input');
@@ -51,24 +53,46 @@ export const Register = () => {
   buttonRegister.setAttribute('id', 'submitRegister');
   buttonRegister.setAttribute('value', 'CREATE ACCOUNT');
 
-  inputUser.setAttribute('id', 'inputUser');
+  const containerButtons = document.createElement('section');
+  const textContinue = document.createElement('p');
+  const buttonGoogle = document.createElement('button');
+  const buttonGithub = document.createElement('button');
+  const buttonTwitter = document.createElement('button');
+
+  containerButtons.setAttribute('id', 'container-btns');
+  textContinue.setAttribute('id', 'txt-continue');
+  buttonGoogle.setAttribute('class', 'white-btns');
+  buttonGoogle.setAttribute('id', 'white-btns1');
+  const logoG = document.createElement('img');
+  // logoG.src = './images/google.png';
+  logoG.setAttribute('id', 'logo-google');
+  buttonGithub.setAttribute('class', 'white-btns');
+  buttonGithub.setAttribute('id', 'white-btns2');
+  buttonTwitter.setAttribute('class', 'white-btns');
+  buttonTwitter.setAttribute('id', 'white-btns3');
+
+  // inputUser.setAttribute('id', 'inputUser');
   inputEmail.setAttribute('id', 'inputMail');
   inputPass.setAttribute('id', 'inputPassword');
 
-  labelUser.textContent = 'Username';
+  // labelUser.textContent = 'Username';
   labelMail.textContent = 'E-mail';
   labelPass.textContent = 'Password';
   buttonRegister.textContent = 'CREATE ACCOUNT';
-  form.append(labelUser, inputUser, message2, labelMail, inputEmail, message1, labelPass, inputPass, message3, buttonRegister);
+  textContinue.textContent = 'Or continue with';
+  buttonGoogle.textContent = 'Google';
+  buttonGithub.textContent = 'Github';
+  buttonTwitter.textContent = 'Twitter';
+  form.append(message2, labelMail, inputEmail, message1, labelPass, inputPass, message3, buttonRegister);
+  containerButtons.append(textContinue, buttonGoogle, buttonGithub, buttonTwitter);
+  buttonGoogle.append(logoG);
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     console.log(inputPass.value);
-    if (inputUser.value === '' && inputEmail.value === '' && inputPass.value === '') {
+    if (inputEmail.value === '' && inputPass.value === '') {
       message3.textContent = 'Please, fill in all fields';
-    } else if (inputUser.value === '') {
-      message2.textContent = 'Please, enter username';
     } else {
       adduserWithEmail(inputEmail.value, inputPass.value).then((userCredential) => {
       // Signed in
@@ -98,7 +122,85 @@ export const Register = () => {
     }
   });
 
-  div.append(logoImg, form);
+  buttonGoogle.addEventListener('click', (e) => {
+    signInUserWithProviders(providerGoogle);
+
+    redirectResult().then((result) => {
+    // This gives you a Google Access Token. You can use it to access Google APIs.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+
+      // The signed-in user info.
+      const user = result.user;
+    }).catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+    });
+
+    onNavigate('/feed');
+  });
+
+  buttonGithub.addEventListener('click', (e) => {
+    signInUserWithProviders(providerGithub);
+
+    redirectResult().then((result) => {
+      const credential = GithubAuthProvider.credentialFromResult(result);
+      if (credential) {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const token = credential.accessToken;
+        // ...
+      }
+  
+      // The signed-in user info.
+      const user = result.user;
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GithubAuthProvider.credentialFromError(error);
+      // ...
+    });
+
+    onNavigate('/feed');
+  });
+
+  buttonTwitter.addEventListener('click', (e) => {
+    signInUserWithProviders(providerTwitter);
+
+    redirectResult().then((result) => {
+      // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+      // You can use these server side with your app's credentials to access the Twitter API.
+      const credential = TwitterAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const secret = credential.secret;
+      // ...
+  
+      // The signed-in user info.
+      const user = result.user;
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = TwitterAuthProvider.credentialFromError(error);
+      // ...
+    });
+
+    onNavigate('/feed');
+  });
+
+  div.append(logoImg, form, containerButtons);
 
   return div;
 };

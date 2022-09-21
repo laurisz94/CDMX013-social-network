@@ -25,8 +25,7 @@ const component = routes[window.location.pathname];
 
 window.onpopstate = () => {
   root.removeChild(root.firstChild);
-  console.log(component());
-  root.append(component());
+  root.append(routes[window.location.pathname]());
 };
 
 root.appendChild(component());
