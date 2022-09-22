@@ -22,6 +22,10 @@ export const Welcome = () => {
     onNavigate('/register');
   });
 
+  buttonLogin.addEventListener('click', () => {
+    onNavigate('/login');
+  });
+
   figure.append(logoImg);
   section.append(figure, buttonRegister, buttonLogin);
 
