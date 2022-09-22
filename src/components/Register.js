@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-useless-escape */
 /* eslint-disable max-len */
 import {
@@ -156,7 +158,7 @@ export const Register = () => {
         const token = credential.accessToken;
         // ...
       }
-  
+
       // The signed-in user info.
       const user = result.user;
     }).catch((error) => {
@@ -183,7 +185,7 @@ export const Register = () => {
       const token = credential.accessToken;
       const secret = credential.secret;
       // ...
-  
+
       // The signed-in user info.
       const user = result.user;
     }).catch((error) => {
