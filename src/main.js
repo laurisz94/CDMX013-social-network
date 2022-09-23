@@ -4,6 +4,9 @@ import { Register } from './components/Register.js';
 import { Feed } from './components/Feed.js';
 import { Login } from './components/Login.js';
 
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js';
+const auth = getAuth();
+
 const root = document.getElementById('root');
 
 const routes = {
@@ -29,5 +32,13 @@ window.onpopstate = () => {
   root.removeChild(root.firstChild);
   root.append(routes[window.location.pathname]());
 };
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    onNavigate('/feed');
+  } else {
+    onNavigate('/');
+  }
+});
 
 root.appendChild(component());
