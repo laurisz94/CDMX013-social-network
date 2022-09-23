@@ -27,7 +27,7 @@ export const Welcome = () => {
   });
 
   figure.append(logoImg);
-  section.append(figure, buttonRegister, buttonLogin);
+  section.append(figure, buttonLogin, buttonRegister);
 
   return section;
 };

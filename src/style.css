@@ -30,20 +30,6 @@
       width: 296px;
       height: 44px;
       color: #000000;
-      background: #FEBC00;
-      font-size: 16px;
-      text-align: center;
-      border-style: none;
-      border-radius: 50px;
-      margin: auto;
-      margin-top: 70px;
-   }
-   
-   #buttonLogin {
-      display: block;
-      width: 296px;
-      height: 44px;
-      color: #000000;
       background: #FD7100;
       font-size: 16px;
       text-align: center;
@@ -51,6 +37,20 @@
       border-radius: 50px;
       margin: auto;
       margin-top: 30px;
+   }
+   
+   #buttonLogin {
+      display: block;
+      width: 296px;
+      height: 44px;
+      color: #000000;
+      background:  #FEBC00;
+      font-size: 16px;
+      text-align: center;
+      border-style: none;
+      border-radius: 50px;
+      margin: auto;
+      margin-top: 70px;
    } 
 
    #logo-small {
@@ -154,6 +154,13 @@
       align-items: flex-start;
       vertical-align: middle;
    }*/
+
+   h2{
+      color:white;
+      text-align: center;
+      font-size: 40px;
+      margin-top: 50px;
+   }
 
    
    }

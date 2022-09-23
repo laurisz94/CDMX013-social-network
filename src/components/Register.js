@@ -21,6 +21,8 @@ export const Register = () => {
   logoImg.src = './images/logo-munchies.png';
   logoImg.setAttribute('id', 'logo-small');
 
+  const titleRegister = document.createElement('h2');
+
   const form = document.createElement('form');
   // const labelUser = document.createElement('label');
   const labelMail = document.createElement('label');
@@ -77,6 +79,7 @@ export const Register = () => {
   inputPass.setAttribute('id', 'inputPassword');
 
   // labelUser.textContent = 'Username';
+  titleRegister.textContent = 'Register';
   labelMail.textContent = 'E-mail';
   labelPass.textContent = 'Password';
   buttonRegister.textContent = 'CREATE ACCOUNT';
@@ -194,7 +197,7 @@ export const Register = () => {
     });
   });
 
-  div.append(logoImg, form, containerButtons);
+  div.append(logoImg, titleRegister, form, containerButtons);
 
   return div;
 };
