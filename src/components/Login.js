@@ -5,7 +5,6 @@
 import {
   redirectResult, signInUserWithProviders, providerGithub, providerGoogle, providerTwitter, validateUserWithEmail,
 } from '../lib/auth.js';
-import { onNavigate } from '../main.js';
 
 export const Login = () => {
   const div = document.createElement('div');
@@ -96,8 +95,6 @@ export const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
-
-      onNavigate('/feed');
   });
 
   buttonGoogle.addEventListener('click', (e) => {
@@ -120,8 +117,6 @@ export const Login = () => {
       const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
     });
-
-    onNavigate('/feed');
   });
 
   buttonGithub.addEventListener('click', (e) => {
@@ -147,8 +142,6 @@ export const Login = () => {
       const credential = GithubAuthProvider.credentialFromError(error);
       // ...
     });
-
-    onNavigate('/feed');
   });
 
   buttonTwitter.addEventListener('click', (e) => {
@@ -174,8 +167,6 @@ export const Login = () => {
       const credential = TwitterAuthProvider.credentialFromError(error);
       // ...
     });
-
-    onNavigate('/feed');
   });
 
   div.append(logoImg, form, containerButtons);
