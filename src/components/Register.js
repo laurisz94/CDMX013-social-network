@@ -5,7 +5,6 @@
 import {
   adduserWithEmail, redirectResult, signInUserWithProviders, providerGithub, providerGoogle, providerTwitter,
 } from '../lib/auth.js';
-import { onNavigate } from '../main.js';
 
 export const Register = () => {
   //
@@ -101,7 +100,6 @@ export const Register = () => {
         console.log('siii ya te registraste welcome');
         const user = userCredential.user;
         // ...
-        onNavigate('/feed');
       })
         .catch((error) => {
           console.log('nel no te puedes registrar');
@@ -144,8 +142,6 @@ export const Register = () => {
       const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
     });
-
-    onNavigate('/feed');
   });
 
   buttonGithub.addEventListener('click', (e) => {
@@ -171,8 +167,6 @@ export const Register = () => {
       const credential = GithubAuthProvider.credentialFromError(error);
       // ...
     });
-
-    onNavigate('/feed');
   });
 
   buttonTwitter.addEventListener('click', (e) => {
@@ -198,8 +192,6 @@ export const Register = () => {
       const credential = TwitterAuthProvider.credentialFromError(error);
       // ...
     });
-
-    onNavigate('/feed');
   });
 
   div.append(logoImg, form, containerButtons);
