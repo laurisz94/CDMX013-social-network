@@ -7,8 +7,8 @@ import {
 } from '../lib/auth.js';
 
 export const Login = () => {
-  const div = document.createElement('div');
-  div.setAttribute('class', 'secondLayout');
+  const sectionLogin = document.createElement('section');
+  sectionLogin.setAttribute('class', 'sections-first-layouts');
 
   const logoImg = document.createElement('img');
   logoImg.src = './images/logo-munchies.png';
@@ -22,17 +22,17 @@ export const Login = () => {
   const labelPass = document.createElement('label');
 
   // labelUser.setAttribute('class', 'label');
-  labelMail.setAttribute('class', 'label');
-  labelPass.setAttribute('class', 'label');
+  labelMail.setAttribute('class', 'label-indicator-form');
+  labelPass.setAttribute('class', 'label-indicator-form');
 
   // const inputUser = document.createElement('input');
   // inputUser.setAttribute('class', 'input');
 
   const inputEmail = document.createElement('input');
-  inputEmail.setAttribute('class', 'input');
+  inputEmail.setAttribute('class', 'input-register');
 
   const inputPass = document.createElement('input');
-  inputPass.setAttribute('class', 'input');
+  inputPass.setAttribute('class', 'input-register');
   inputPass.setAttribute('type', 'password');
 
   const message1 = document.createElement('p');
@@ -173,7 +173,7 @@ export const Login = () => {
     });
   });
 
-  div.append(logoImg, titleLogin, form, containerButtons);
+  sectionLogin.append(logoImg, titleLogin, form, containerButtons);
 
-  return div;
+  return sectionLogin;
 };

@@ -9,7 +9,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-   body {
+   body{
       height: auto;
       width: 100vw;
       background-image: url(./images/fondo.png);
@@ -17,7 +17,7 @@
       background-repeat: no-repeat;
    }
    
-   #logo{
+   #logo {
       display: block;
       margin: auto;
       margin-top: 200px;
@@ -76,7 +76,7 @@
       padding-bottom: 5px;
    }
 
-   .input {
+   .input-register {
       width: 296px;
       height: 44px;
       border-style: none;
@@ -101,7 +101,7 @@
       border-radius: 50px;
    }
 
-   .message1{
+   .message-error{
       color: red;
    }
    
@@ -153,13 +153,7 @@
       margin-top: 50px;
    }
 
-   #main {
-      height: 915px;
-      background-image: url(./images/back-feed.png);
-      background-size: cover;
-      background-repeat: no-repeat;
-   }
-   .section {
+   .section-feed {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -178,18 +172,19 @@
       background-color: blue;
       margin-top: 35px;
    }
+   
    nav{
-      width: 100%;
+      width: 100vw;
       height: 69px;
       background:red;
-      display: flex;
       justify-content: space-between ;
    }
 
-
 }
    
-   
+  .bodyFeed{
+   background-color: pink;
+  } 
  
 
 

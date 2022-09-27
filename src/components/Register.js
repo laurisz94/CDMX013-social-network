@@ -14,8 +14,8 @@ export const Register = () => {
    const email = inputEmail.value
     const password= inputPassword.value */
 
-  const div = document.createElement('div');
-  div.setAttribute('class', 'secondLayout');
+  const sectionRegister = document.createElement('section');
+  sectionRegister.setAttribute('class', 'sections-first-layouts');
 
   const logoImg = document.createElement('img');
   logoImg.src = './images/logo-munchies.png';
@@ -29,27 +29,27 @@ export const Register = () => {
   const labelPass = document.createElement('label');
 
   // labelUser.setAttribute('class', 'label');
-  labelMail.setAttribute('class', 'label');
-  labelPass.setAttribute('class', 'label');
+  labelMail.setAttribute('class', 'label-indicator-form');
+  labelPass.setAttribute('class', 'label-indicator-form');
 
   // const inputUser = document.createElement('input');
   // inputUser.setAttribute('class', 'input');
 
   const inputEmail = document.createElement('input');
-  inputEmail.setAttribute('class', 'input');
+  inputEmail.setAttribute('class', 'input-register');
 
   const inputPass = document.createElement('input');
-  inputPass.setAttribute('class', 'input');
+  inputPass.setAttribute('class', 'input-register');
   inputPass.setAttribute('type', 'password');
 
-  const message1 = document.createElement('p');
-  message1.setAttribute('class', 'message1');
+  const messageError = document.createElement('p');
+  messageError.setAttribute('class', 'message-error');
 
   const message2 = document.createElement('p');
-  message2.setAttribute('class', 'message1');
+  message2.setAttribute('class', 'message-error');
 
   const message3 = document.createElement('p');
-  message3.setAttribute('class', 'message1');
+  message3.setAttribute('class', 'message-error');
 
   const buttonRegister = document.createElement('input');
   buttonRegister.setAttribute('type', 'submit');
@@ -87,7 +87,7 @@ export const Register = () => {
   buttonGoogle.textContent = 'Google';
   buttonGithub.textContent = 'Github';
   buttonTwitter.textContent = 'Twitter';
-  form.append(message2, labelMail, inputEmail, message1, labelPass, inputPass, message3, buttonRegister);
+  form.append(message2, labelMail, inputEmail, messageError, labelPass, inputPass, message3, buttonRegister);
   containerButtons.append(textContinue, buttonGoogle, buttonGithub, buttonTwitter);
   buttonGoogle.append(logoG);
 
@@ -199,7 +199,7 @@ export const Register = () => {
     });
   });
 
-  div.append(logoImg, titleRegister, form, containerButtons);
+  sectionRegister.append(logoImg, titleRegister, form, containerButtons);
 
-  return div;
+  return sectionRegister;
 };

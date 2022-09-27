@@ -1,8 +1,8 @@
 import { onNavigate } from '../main.js';
 
 export const Welcome = () => {
-  const section = document.createElement('section');
-  section.setAttribute('class', 'section');
+  const sectionWelcome = document.createElement('section');
+  sectionWelcome.setAttribute('class', 'sections-first-layouts');
 
   const figure = document.createElement('figure');
   const logoImg = document.createElement('img');
@@ -27,7 +27,7 @@ export const Welcome = () => {
   });
 
   figure.append(logoImg);
-  section.append(figure, buttonLogin, buttonRegister);
+  sectionWelcome.append(figure, buttonLogin, buttonRegister);
 
-  return section;
+  return sectionWelcome;
 };
