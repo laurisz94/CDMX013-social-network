@@ -1,12 +1,9 @@
 import { onNavigate } from '../main.js';
 
 export const Feed = () => {
-  const main = document.createElement('main');
-  main.setAttribute('id', 'main');
-
-  const section = document.createElement('section');
-  section.setAttribute('class', 'section');
-
+  const sectionFeed = document.createElement('section');
+  sectionFeed.setAttribute('class', 'section-feed');
+  
   const textPost = document.createElement('input');
   textPost.setAttribute('class', 'textPost');
 
@@ -20,9 +17,8 @@ export const Feed = () => {
   const iconLogout = document.createElement('img');
   iconLogout.src = './images/iconeoff.png';
 
-  section.append(textPost, containerPost);
-  menu.append(iconHome, iconLogout)
-  main.append(section, menu);
+  menu.append(iconHome, iconLogout);
+  sectionFeed.append(textPost, containerPost, menu);
 
-  return main;
+  return sectionFeed;
 };

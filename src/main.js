@@ -5,7 +5,6 @@ import { Register } from './components/Register.js';
 import { Feed } from './components/Feed.js';
 import { Login } from './components/Login.js';
 
-
 const auth = getAuth();
 
 const root = document.getElementById('root');
