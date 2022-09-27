@@ -117,9 +117,11 @@ export const Register = () => {
           } else if (inputPass.value === '') {
             message3.textContent = 'vacío';
           } else if (inputPass.value.length < 6 && inputPass.value.length > 0) {
-            message3.textContent = 'más de 6';
+            message3.textContent = 'Password should be at least 6 characters';
+          } else if (errorCode === 'auth/email-already-in-use') {
+            message3.textContent = 'Email already in use';
           }
-
+          console.log(errorCode);
           // ..
         });
     }
