@@ -1,5 +1,6 @@
 import { onNavigate } from '../main.js';
 import { addPost } from '../lib/posts.js';
+import { singOutUser } from '../lib/auth.js';
 
 export const Feed = () => {
   const sectionFeed = document.createElement('section');
@@ -24,6 +25,15 @@ export const Feed = () => {
   iconHome.src = './images/iconhome.png';
   const iconLogout = document.createElement('img');
   iconLogout.src = './images/iconeoff.png';
+  iconLogout.setAttribute('id', 'iconLogout');
+
+  iconLogout.addEventListener('click', () => {
+    singOutUser().then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  });
 
   textPost.textContent = 'enviar';
 
