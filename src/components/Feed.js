@@ -1,5 +1,6 @@
 import { onNavigate } from '../main.js';
-import { addPost } from '../lib/posts.js';
+import { addPost, getPost } from '../lib/posts.js';
+import { singOutUser } from '../lib/auth.js';
 
 export const Feed = () => {
   const sectionFeed = document.createElement('section');
@@ -14,6 +15,7 @@ export const Feed = () => {
   const buttonPost = document.createElement('input');
   buttonPost.setAttribute('type', 'submit');
   buttonPost.setAttribute('id', 'button-post');
+  buttonPost.setAttribute('value', '');
 
   const containerPost = document.createElement('div');
   containerPost.setAttribute('class', 'containerPost');
@@ -24,8 +26,15 @@ export const Feed = () => {
   iconHome.src = './images/iconhome.png';
   const iconLogout = document.createElement('img');
   iconLogout.src = './images/iconeoff.png';
+  iconLogout.setAttribute('id', 'iconLogout');
 
-  textPost.textContent = 'enviar';
+  iconLogout.addEventListener('click', () => {
+    singOutUser().then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  });
 
   menu.append(iconHome, iconLogout);
   formPost.append(textPost, buttonPost);
@@ -34,7 +43,7 @@ export const Feed = () => {
   formPost.addEventListener('submit', (e) => {
     e.preventDefault();
     addPost(textPost.value);
-    console.log(textPost);
+    getPost();
   });
 
   return sectionFeed;
