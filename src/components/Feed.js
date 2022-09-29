@@ -1,5 +1,5 @@
 import { onNavigate } from '../main.js';
-import { addPost } from '../lib/posts.js';
+import { addPost, getPost } from '../lib/posts.js';
 import { singOutUser } from '../lib/auth.js';
 
 export const Feed = () => {
@@ -15,6 +15,7 @@ export const Feed = () => {
   const buttonPost = document.createElement('input');
   buttonPost.setAttribute('type', 'submit');
   buttonPost.setAttribute('id', 'button-post');
+  buttonPost.setAttribute('value', '');
 
   const containerPost = document.createElement('div');
   containerPost.setAttribute('class', 'containerPost');
@@ -35,8 +36,6 @@ export const Feed = () => {
     });
   });
 
-  textPost.textContent = 'enviar';
-
   menu.append(iconHome, iconLogout);
   formPost.append(textPost, buttonPost);
   sectionFeed.append(formPost, containerPost, menu);
@@ -44,7 +43,7 @@ export const Feed = () => {
   formPost.addEventListener('submit', (e) => {
     e.preventDefault();
     addPost(textPost.value);
-    console.log(textPost);
+    getPost();
   });
 
   return sectionFeed;
