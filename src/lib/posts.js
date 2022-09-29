@@ -1,4 +1,6 @@
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js';
+import {
+  getFirestore, collection, addDoc, doc, onSnapshot,
+} from 'https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js';
 import { app } from './config.js';
 
 const db = getFirestore(app);
@@ -14,3 +16,4 @@ export const addPost = (inputPost) => addDoc(collection(db, 'post'), { inputPost
   } catch (e) {
     console.error("Error adding document: ", e);
   } */
+export const getPost = (callback) => onSnapshot(doc(db, callback));

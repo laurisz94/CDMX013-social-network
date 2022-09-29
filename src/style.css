@@ -169,14 +169,20 @@
       text-align: center;
    }
 
-   #buttonPost {
-
+   #button-post {
       position: relative;
-      background-color: red;
-      width: 40px;
-      height: 20px;
+      background-image: url(./images/icono-eviar.png);
+      background-color: #FEBC00;
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
    }
 
+   .button-image {
+      position: absolute;
+
+   }
    .containerPost{
       width: 352px;
       height: 100px;
