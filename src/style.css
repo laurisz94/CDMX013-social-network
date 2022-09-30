@@ -169,6 +169,7 @@
       text-align: center;
    }
 
+   #button-post {
       position: relative;
       background-image: url(./images/icono-eviar.png);
       background-color: #FEBC00;
@@ -183,9 +184,11 @@
 
    }
    .containerPost{
+      position:absolute;
       width: 352px;
       height: 100px;
       margin-top: 35px;
+      background-color: aquamarine;
    }
    
    nav{

@@ -1,13 +1,12 @@
-import { onNavigate } from '../main.js';
+import { onNavigate, onAuthStateChangedFunction } from '../main.js';
 import { addPost, getPost } from '../lib/posts.js';
-import { singOutUser } from '../lib/auth.js';
+import { singOutUser, auth } from '../lib/auth.js';
 
 export const Feed = () => {
   const sectionFeed = document.createElement('section');
   sectionFeed.setAttribute('class', 'section-feed');
 
   const formPost = document.createElement('form');
-
   const textPost = document.createElement('input');
   textPost.setAttribute('placeholder', 'Share your recipes...');
   textPost.setAttribute('class', 'textPost');
@@ -28,6 +27,17 @@ export const Feed = () => {
   iconLogout.src = './images/iconeoff.png';
   iconLogout.setAttribute('id', 'iconLogout');
 
+  // let postsToShow = [];
+  // const showPost = '';
+  getPost((posts) => {
+    // posts.forEach((post) => console.log('Current data: ', post.data()));
+    posts.forEach((post) => { containerPost.textContent = post.data(); });
+
+    /* showPost = `
+    <p>${textPost}</p>`; */
+  });
+  // containerPost.innerHTML = showPost;
+
   iconLogout.addEventListener('click', () => {
     singOutUser().then(() => {
       // Sign-out successful.
@@ -40,22 +50,21 @@ export const Feed = () => {
   formPost.append(textPost, buttonPost);
   sectionFeed.append(formPost, containerPost, menu);
 
+  onAuthStateChangedFunction((user) => {
+    const userDisplay = user.email;
+    console.log(userDisplay);
+    const userEmail = document.createElement('p');
+    userEmail.setAttribute('class', 'userEmail');
+    userEmail.textContent = userDisplay;
+    menu.append(userEmail);
+  });
+
   formPost.addEventListener('submit', (e) => {
     e.preventDefault();
     if (textPost.value !== '') {
       addPost(textPost.value);
     }
-    /* getPost((querySnapshot) => {
-      // containerPost.innerHTML = '';
-      querySnapshot.forEach((doc) => {
-        const postData = doc.data();
-      });
-    });
-    // console.log(addPost); */
 
-    getPost((prueba) => {
-      prueba.forEach((miniPrueba) => console.log('Current data: ', miniPrueba.data()));
-    });
     textPost.value = '';
   });
   return sectionFeed;
