@@ -41,4 +41,6 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+export const onAuthStateChangedFunction = (callback) => onAuthStateChanged(auth, callback);
+
 root.appendChild(component());
