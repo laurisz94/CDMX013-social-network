@@ -42,9 +42,21 @@ export const Feed = () => {
 
   formPost.addEventListener('submit', (e) => {
     e.preventDefault();
-    addPost(textPost.value);
-    getPost();
-  });
+    if (textPost.value !== '') {
+      addPost(textPost.value);
+    }
+    /* getPost((querySnapshot) => {
+      // containerPost.innerHTML = '';
+      querySnapshot.forEach((doc) => {
+        const postData = doc.data();
+      });
+    });
+    // console.log(addPost); */
 
+    getPost((prueba) => {
+      prueba.forEach((miniPrueba) => console.log('Current data: ', miniPrueba.data()));
+    });
+    textPost.value = '';
+  });
   return sectionFeed;
 };
