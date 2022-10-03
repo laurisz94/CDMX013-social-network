@@ -15,6 +15,7 @@
       background-image: url(./images/fondo.png);
       background-size: cover;
       background-repeat: no-repeat;
+      background-attachment: fixed;
    }
    
    #logo {
@@ -184,11 +185,11 @@
 
    }
    .containerPost{
-      position:absolute;
       width: 352px;
-      height: 100px;
-      margin-top: 35px;
-      background-color: aquamarine;
+      height: auto;
+      margin-top: 15px;
+      background-color: rgba(255, 251, 251, 0.7);
+      border-radius: 8px;
    }
    
    nav{
@@ -196,7 +197,22 @@
       height: 69px;
       background:rgba(18, 18, 18, 1);
       display: flex;
-      justify-content: space-between;
+      position: fixed;
+      bottom: 0;
+   }   
+
+   .userEmail {
+      color: aliceblue;
+      align-self: center;
+      display: block;
+   }
+
+   #iconLogout{
+      width: 70px;
+   }
+
+   #i-home{
+      width: 70px;
    }
 
 }
