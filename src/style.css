@@ -184,12 +184,32 @@
       position: absolute;
 
    }
+
+   #container-all-post{
+      width: auto;
+      height: auto;
+      margin-bottom: 100px;
+
+   }
    .containerPost{
       width: 352px;
       height: auto;
       margin-top: 15px;
       background-color: rgba(255, 251, 251, 0.7);
       border-radius: 8px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: justify;
+      padding: 15px;
+   }
+
+   .label-user-post{
+      width: 352px;
+      display: flex;
+      justify-content: right;
+      color: white;
+      font-size: 0.85rem;
    }
    
    nav{
@@ -215,6 +235,12 @@
       width: 70px;
    }
 
+   .icons-edit {
+      height: 50px;
+      width: 50px;
+      display: flex;
+      align-items: flex-end ;
+   }
 }
    
 
