@@ -1,5 +1,5 @@
 import { onNavigate, onAuthStateChangedFunction } from '../main.js';
-import { addPost, getPost } from '../lib/posts.js';
+import { addPost, getPost, deletePost } from '../lib/posts.js';
 import { singOutUser, auth } from '../lib/auth.js';
 
 export const Feed = () => {
@@ -15,6 +15,8 @@ export const Feed = () => {
   buttonPost.setAttribute('type', 'submit');
   buttonPost.setAttribute('id', 'button-post');
   buttonPost.setAttribute('value', '');
+  const containerAllPost = document.createElement('div');
+  containerAllPost.setAttribute('id', 'container-all-post');
 
   const menu = document.createElement('nav');
 
@@ -27,36 +29,69 @@ export const Feed = () => {
 
   onAuthStateChangedFunction((user) => {
     const userDisplay = user.email;
-    console.log(userDisplay);
+    // console.log(userDisplay);
     const userEmail = document.createElement('p');
     userEmail.setAttribute('class', 'userEmail');
-    userEmail.textContent = `Hola! ${userDisplay}`;
-    menu.append(userEmail);
+    userEmail.textContent = `¡Hola, ${userDisplay}!`;
+    menu.append(iconHome, userEmail, iconLogout);
   });
 
-  formPost.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (textPost.value !== '') {
-      addPost(textPost.value);
-    }
+  sectionFeed.append(formPost, containerAllPost);
 
-    textPost.value = '';
-  });
-
-  sectionFeed.append(formPost);
-
-  // let postsToShow = [];
-  // const showPost = '';
   getPost((posts) => {
-    // containerPost.innerHTML = '';
+    containerAllPost.innerHTML = '';
     // posts.forEach((post) => console.log('Current data: ', post.data().inputPost));
     posts.forEach((post) => {
       const containerPost = document.createElement('div');
       containerPost.setAttribute('class', 'containerPost');
       const allPost = post.data().inputPost;
-      containerPost.textContent += allPost;
-      sectionFeed.append(containerPost);
+
+      const labelUserPost = document.createElement('label');
+      labelUserPost.setAttribute('class', 'label-user-post');
+      labelUserPost.textContent = (post.data().userPost);
+      // const emailUserPost = post.data().userPost;
+      containerPost.textContent = allPost;
+
+      onAuthStateChangedFunction((user) => {
+        if (post.data().userPost === user.email) {
+          const iconErase = document.createElement('img');
+          iconErase.src = './images/iconoborrar.png';
+          iconErase.setAttribute('class', 'icons-edit');
+
+          const containerIcons = document.createElement('div');
+          const iconEdit = document.createElement('img');
+          iconEdit.src = './images/iconoeditar.png';
+          iconEdit.setAttribute('class', 'icons-edit');
+
+          containerIcons.append(iconEdit, iconErase);
+          containerPost.append(containerIcons);
+
+          iconErase.addEventListener('click', () => {
+            console.log('Borrar');
+            deletePost();
+          });
+        }
+      });
+
+      containerAllPost.append(containerPost, labelUserPost);
     });
+  });
+
+  formPost.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (textPost.value !== '') {
+      onAuthStateChangedFunction((user) => {
+        const userDisplay = user.email;
+        addPost(textPost.value, userDisplay);
+        textPost.value = '';
+      });
+    }
+
+    // textPost.value = '';
+  });
+
+  iconHome.addEventListener('click', () => {
+    window.scrollTo(0, 0);
   });
 
   iconLogout.addEventListener('click', () => {
@@ -67,9 +102,11 @@ export const Feed = () => {
     });
   });
 
-  menu.append(iconHome, iconLogout);
+  // menu.append(iconHome, iconLogout);
   formPost.append(textPost, buttonPost);
   sectionFeed.append(menu);
+
+  console.log(Date.now());
 
   return sectionFeed;
 };

@@ -1,11 +1,11 @@
 import {
-  getFirestore, collection, addDoc, doc, onSnapshot, /* query, orderBy */
+  getFirestore, collection, addDoc, doc, onSnapshot, updateDoc, deleteField, /* query, orderBy */
 } from 'https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js';
 import { app } from './config.js';
 
 const db = getFirestore(app);
 
-export const addPost = (inputPost) => addDoc(collection(db, 'post'), { inputPost });
+export const addPost = (inputPost, userPost) => addDoc(collection(db, 'post'), { inputPost, userPost, fecha: 'hoy' });
 
 /* try {
     const docRef = await addDoc(collection(db, "post"), {
@@ -19,5 +19,8 @@ export const addPost = (inputPost) => addDoc(collection(db, 'post'), { inputPost
 // const q = query(collection(db, 'posts'), orderBy('timeStamp'));
 
 export const getPost = (callback) => onSnapshot(collection(db, 'post'), callback);
+export const deletePost = () => updateDoc(collection(db, 'post'), {
+  inputPost: deleteField(),
+});
 
 /* export const getPost = ( functionPrueba() ) => onSnapshot(doc(db, 'post'), functionPrueba()); */
