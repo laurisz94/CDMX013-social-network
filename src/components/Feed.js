@@ -57,6 +57,7 @@ export const Feed = () => {
           const iconErase = document.createElement('img');
           iconErase.src = './images/iconoborrar.png';
           iconErase.setAttribute('class', 'icons-edit');
+          //iconErase.dataset.postId = post.id;
 
           const containerIcons = document.createElement('div');
           const iconEdit = document.createElement('img');
@@ -66,9 +67,10 @@ export const Feed = () => {
           containerIcons.append(iconEdit, iconErase);
           containerPost.append(containerIcons);
 
-          iconErase.addEventListener('click', () => {
+          iconErase.addEventListener('click', (e) => {
             console.log('Borrar');
-            deletePost();
+            //deletePost(e.target.dataset.postId);
+            deletePost(post.id);
           });
         }
       });
