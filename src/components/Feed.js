@@ -27,12 +27,36 @@ export const Feed = () => {
   iconLogout.src = './images/iconeoff.png';
   iconLogout.setAttribute('id', 'iconLogout');
 
+  const alertConfirm = document.createElement('dialog');
+  alertConfirm.setAttribute('id', 'alert-confirm');
+
+  const textConfirm = document.createElement('p');
+  textConfirm.setAttribute('id', 'text-confirm');
+
+  const containerButtons = document.createElement('div');
+  containerButtons.setAttribute('id', 'container-delete');
+
+  const buttonConfirm = document.createElement('button');
+  buttonConfirm.setAttribute('id', 'btn-confirm');
+
+  const buttonCancel = document.createElement('button');
+  buttonCancel.setAttribute('id', 'btn-cancel');
+
+  textConfirm.textContent = 'Delete Post?';
+  buttonConfirm.textContent = 'Delete';
+  buttonCancel.textContent = 'Cancel';
+
+  const paragraphDelete = document.createElement('p');
+  paragraphDelete.setAttribute('id', 'paragraph-delete');
+
+  paragraphDelete.textContent = 'This can\'t be undone, your post will be removed.';
+
   onAuthStateChangedFunction((user) => {
     const userDisplay = user.email;
     // console.log(userDisplay);
     const userEmail = document.createElement('p');
     userEmail.setAttribute('class', 'userEmail');
-    userEmail.textContent = `¡Hola, ${userDisplay}!`;
+    userEmail.textContent = `¡Hi, ${userDisplay}!`;
     menu.append(iconHome, userEmail, iconLogout);
   });
 
@@ -57,7 +81,7 @@ export const Feed = () => {
           const iconErase = document.createElement('img');
           iconErase.src = './images/iconoborrar.png';
           iconErase.setAttribute('class', 'icons-edit');
-          //iconErase.dataset.postId = post.id;
+          // iconErase.dataset.postId = post.id;
 
           const containerIcons = document.createElement('div');
           const iconEdit = document.createElement('img');
@@ -68,9 +92,7 @@ export const Feed = () => {
           containerPost.append(containerIcons);
 
           iconErase.addEventListener('click', () => {
-            console.log('Borrar');
-            //deletePost(e.target.dataset.postId);
-            deletePost(post.id);
+
           });
         }
       });
@@ -106,7 +128,9 @@ export const Feed = () => {
 
   // menu.append(iconHome, iconLogout);
   formPost.append(textPost, buttonPost);
-  sectionFeed.append(menu);
+  alertConfirm.append(textConfirm, paragraphDelete, containerButtons);
+  containerButtons.append(buttonConfirm, buttonCancel);
+  sectionFeed.append(alertConfirm, menu);
 
   console.log(Date.now());
 
