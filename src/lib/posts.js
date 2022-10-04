@@ -20,5 +20,6 @@ export const addPost = (inputPost, userPost) => addDoc(collection(db, 'post'), {
 
 export const getPost = (callback) => onSnapshot(collection(db, 'post'), callback);
 export const deletePost = (postId) => deleteDoc(doc(db, 'post', postId));
+export const editPost = (postId, newInputPost) => updateDoc(doc(db, 'post', postId), { inputPost: newInputPost });
 
 /* export const getPost = ( functionPrueba() ) => onSnapshot(doc(db, 'post'), functionPrueba()); */

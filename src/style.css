@@ -167,6 +167,7 @@
       width: 352px;
       height: 69px;
       margin-top: 35px;
+      border-radius: 8px;
       text-align: center;
    }
 
@@ -289,7 +290,53 @@ YES, ya me harte :( Oigan, de casualidad fueron a la salita a buscarme? */
       font-weight: lighter;
    }
 
+   #edit-dialog {
+      width: 300px;
+      height: 140px;
+      margin: auto;
+      padding: 10px;
+      align-content: center;
+      background-color:rgba(18, 18, 18, 0.97);
+      border-radius: 8px;
+      border-style: none;
+   }
+
+   #container-edit-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+   }
    
+   #submit-edit{
+      background-color: #FD7100;
+      width: 90px;
+      border-radius: 50px;
+      border-style: none;
+      color: #ffffff;
+      font-weight: lighter;
+   }
+
+   #btn-cancel-edit {
+      background-color: #595858 ;
+      width: 90px;
+      height: 20px;
+      border-style: none;
+      border-radius: 50px;
+      color: #ffffff;
+      font-weight: lighter;
+   }
+
+   #edit-text-post{
+      width: 200px;
+      height: 80px;
+      border-radius: 8px;
+      margin: 10px;
+   }
+
+   ::backdrop{
+      background-color:  rgba(82, 79, 79, 0.87)
+   }
+
 }
    
 
