@@ -67,7 +67,7 @@ export const Feed = () => {
           containerIcons.append(iconEdit, iconErase);
           containerPost.append(containerIcons);
 
-          iconErase.addEventListener('click', (e) => {
+          iconErase.addEventListener('click', () => {
             console.log('Borrar');
             //deletePost(e.target.dataset.postId);
             deletePost(post.id);
