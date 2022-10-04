@@ -1,5 +1,5 @@
 import {
-  getFirestore, collection, addDoc, doc, onSnapshot, updateDoc, deleteField, /* query, orderBy */
+  getFirestore, collection, addDoc, doc, onSnapshot, updateDoc, deleteDoc, /* query, orderBy */
 } from 'https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js';
 import { app } from './config.js';
 
@@ -19,8 +19,7 @@ export const addPost = (inputPost, userPost) => addDoc(collection(db, 'post'), {
 // const q = query(collection(db, 'posts'), orderBy('timeStamp'));
 
 export const getPost = (callback) => onSnapshot(collection(db, 'post'), callback);
-export const deletePost = () => updateDoc(collection(db, 'post'), {
-  inputPost: deleteField(),
-});
+export const deletePost = (postId) => deleteDoc(doc(db, 'post', postId));
+
 
 /* export const getPost = ( functionPrueba() ) => onSnapshot(doc(db, 'post'), functionPrueba()); */
