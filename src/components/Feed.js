@@ -1,5 +1,7 @@
 import { onNavigate, onAuthStateChangedFunction } from '../main.js';
-import { addPost, getPost, deletePost } from '../lib/posts.js';
+import {
+  addPost, getPost, deletePost, editPost,
+} from '../lib/posts.js';
 import { singOutUser, auth } from '../lib/auth.js';
 
 export const Feed = () => {
@@ -50,6 +52,23 @@ export const Feed = () => {
   paragraphDelete.setAttribute('id', 'paragraph-delete');
 
   paragraphDelete.textContent = 'This can\'t be undone, your post will be removed.';
+
+  const editDialog = document.createElement('dialog');
+  editDialog.setAttribute('id', 'edit-dialog');
+
+  const editTextPost = document.createElement('input');
+  editTextPost.setAttribute('id', 'edit-text-post');
+  const containerEditButtons = document.createElement('div');
+  containerEditButtons.setAttribute('id', 'container-edit-buttons');
+  const submitEditButton = document.createElement('input');
+  submitEditButton.setAttribute('type', 'submit');
+  submitEditButton.setAttribute('id', 'submit-edit');
+  submitEditButton.setAttribute('value', 'Edit');
+  const buttonCancelEdit = document.createElement('button');
+  buttonCancelEdit.setAttribute('id', 'btn-cancel-edit');
+  buttonCancelEdit.textContent = 'Cancele';
+  containerEditButtons.append(submitEditButton, buttonCancelEdit);
+  editDialog.append(editTextPost, containerEditButtons);
 
   onAuthStateChangedFunction((user) => {
     const userDisplay = user.email;
@@ -104,6 +123,20 @@ export const Feed = () => {
               alertConfirm.close();
             });
           });
+
+          iconEdit.addEventListener('click', () => {
+            editDialog.showModal();
+            editTextPost.value = allPost;
+            submitEditButton.addEventListener('click', () => {
+              if (editTextPost.value !== '') {
+                editPost(post.id, editTextPost.value);
+                editDialog.close();
+              }
+            });
+            buttonCancelEdit.addEventListener('click', () => {
+              editDialog.close();
+            });
+          });
         }
       });
 
@@ -140,7 +173,7 @@ export const Feed = () => {
   formPost.append(textPost, buttonPost);
   alertConfirm.append(textConfirm, paragraphDelete, containerButtons);
   containerButtons.append(buttonConfirm, buttonCancel);
-  sectionFeed.append(alertConfirm, menu);
+  sectionFeed.append(alertConfirm, editDialog, menu);
 
   console.log(Date.now());
 
