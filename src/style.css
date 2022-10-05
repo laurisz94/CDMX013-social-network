@@ -308,11 +308,11 @@ YES, ya me harte :( Oigan, de casualidad fueron a la salita a buscarme? */
    }
    
    #submit-edit{
-      background-color: #FD7100;
+      background-color: #FEBC00;
       width: 90px;
       border-radius: 50px;
       border-style: none;
-      color: #ffffff;
+      color: #000000;
       font-weight: lighter;
    }
 
@@ -322,7 +322,7 @@ YES, ya me harte :( Oigan, de casualidad fueron a la salita a buscarme? */
       height: 20px;
       border-style: none;
       border-radius: 50px;
-      color: #ffffff;
+      color: #000000;
       font-weight: lighter;
    }
 
@@ -334,7 +334,7 @@ YES, ya me harte :( Oigan, de casualidad fueron a la salita a buscarme? */
    }
 
    ::backdrop{
-      background-color:  rgba(82, 79, 79, 0.87)
+      background-color:  rgba(82, 79, 79, 0.75)
    }
 
 }
