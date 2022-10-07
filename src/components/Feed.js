@@ -20,7 +20,8 @@ export const Feed = () => {
   const containerAllPost = document.createElement('div');
   containerAllPost.setAttribute('id', 'container-all-post');
 
-  const menu = document.createElement('nav');
+  const header = document.createElement('header');
+  header.setAttribute('id', 'menu');
 
   const iconHome = document.createElement('img');
   iconHome.src = './images/iconhome.png';
@@ -76,7 +77,7 @@ export const Feed = () => {
     const userEmail = document.createElement('p');
     userEmail.setAttribute('class', 'userEmail');
     userEmail.textContent = `¡Hi, ${userDisplay}!`;
-    menu.append(iconHome, userEmail, iconLogout);
+    header.append(iconHome, userEmail, iconLogout);
   });
 
   sectionFeed.append(formPost, containerAllPost);
@@ -173,7 +174,7 @@ export const Feed = () => {
   formPost.append(textPost, buttonPost);
   alertConfirm.append(textConfirm, paragraphDelete, containerButtons);
   containerButtons.append(buttonConfirm, buttonCancel);
-  sectionFeed.append(alertConfirm, editDialog, menu);
+  sectionFeed.append(alertConfirm, editDialog, header);
 
   console.log(Date.now());
 
