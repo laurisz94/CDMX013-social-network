@@ -1,8 +1,8 @@
-import { onAuthStateChangedFunction } from '../main.js';
+import { onNavigate, onAuthStateChangedFunction } from '../main.js';
 import {
   addPost, getPost, deletePost, editPost,
 } from '../lib/posts.js';
-import { singOutUser } from '../lib/auth.js';
+import { singOutUser, auth } from '../lib/auth.js';
 
 export const Feed = () => {
   const sectionFeed = document.createElement('section');
