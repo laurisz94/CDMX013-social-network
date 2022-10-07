@@ -9,7 +9,7 @@ En este proyecto construimos una Red Social en el que los usarios puedan subir s
 
 ## 3. Diseño de alta fidelidad
 
-prototipoalta.png](https://i.postimg.cc/g2R5XcVn/prototipoalta.png)](https://postimg.cc/3k89zTbT)
+[![prototipoalta.png](https://i.postimg.cc/Y0XBftng/prototipoalta.png)](https://postimg.cc/K3gWmhyv)
 
 ## 4. Investigación UX.
 Esta app esta enfocada en personas que tienen un gusto sobre la comida y quisieran subir sus recetas de comida, en el cual realizamos la opción de Crear cuenta de una manera sencilla donde solo necesiten para registrarse de un correo y contraseña por la cual tenemos diferentes mensajes en caso de que ya hayan utilizado un correo existente o si la contraseña es corta o pueden crear cuenta si tienen cuenta Google, GitHub y Twitter.. 
