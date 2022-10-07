@@ -88,8 +88,6 @@ export const Login = () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    console.log(inputPass.value);
-
     validateUserWithEmail(inputEmail.value, inputPass.value).then((userCredential) => {
     // Signed in
       const user = userCredential.user;
