@@ -94,18 +94,15 @@ export const Register = () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    console.log(inputPass.value);
     if (inputEmail.value === '' && inputPass.value === '') {
       message3.textContent = 'Please, fill in all fields';
     } else {
       adduserWithEmail(inputEmail.value, inputPass.value).then((userCredential) => {
       // Signed in
-        console.log('siii ya te registraste welcome');
         const user = userCredential.user;
         // ...
       })
         .catch((error) => {
-          console.log('nel no te puedes registrar');
           const errorCode = error.code;
           const errorMessage = error.message;
 
@@ -121,7 +118,6 @@ export const Register = () => {
           } else if (errorCode === 'auth/email-already-in-use') {
             message3.textContent = 'Email already in use';
           }
-          console.log(errorCode);
           // ..
         });
     }
