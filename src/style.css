@@ -8,7 +8,7 @@
    font-size: 1.05rem;
 }
 
-/*@media only screen and (max-width: 600px) {*/
+@media only screen and (max-width: 600px) {
    body{
       height: auto;
       width: 100vw;
@@ -252,8 +252,7 @@
       border-radius: 8px;
       border-style: none;
    }
-/* XD */ /*cansada de ver videos? 
-YES, ya me harte :( Oigan, de casualidad fueron a la salita a buscarme? */
+
    #text-confirm{
       font-size: 24px;
       font-weight: normal ;
