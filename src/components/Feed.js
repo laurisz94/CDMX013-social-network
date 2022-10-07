@@ -1,8 +1,8 @@
-import { onNavigate, onAuthStateChangedFunction } from '../main.js';
+import { onAuthStateChangedFunction } from '../main.js';
 import {
   addPost, getPost, deletePost, editPost,
 } from '../lib/posts.js';
-import { singOutUser, auth } from '../lib/auth.js';
+import { singOutUser } from '../lib/auth.js';
 
 export const Feed = () => {
   const sectionFeed = document.createElement('section');
@@ -67,13 +67,12 @@ export const Feed = () => {
   submitEditButton.setAttribute('value', 'Edit');
   const buttonCancelEdit = document.createElement('button');
   buttonCancelEdit.setAttribute('id', 'btn-cancel-edit');
-  buttonCancelEdit.textContent = 'Cancele';
+  buttonCancelEdit.textContent = 'Cancel';
   containerEditButtons.append(submitEditButton, buttonCancelEdit);
   editDialog.append(editTextPost, containerEditButtons);
 
   onAuthStateChangedFunction((user) => {
     const userDisplay = user.email;
-    // console.log(userDisplay);
     const userEmail = document.createElement('p');
     userEmail.setAttribute('class', 'userEmail');
     userEmail.textContent = `¡Hi, ${userDisplay}!`;
@@ -154,8 +153,6 @@ export const Feed = () => {
         textPost.value = '';
       });
     }
-
-    // textPost.value = '';
   });
 
   iconHome.addEventListener('click', () => {
@@ -175,8 +172,6 @@ export const Feed = () => {
   alertConfirm.append(textConfirm, paragraphDelete, containerButtons);
   containerButtons.append(buttonConfirm, buttonCancel);
   sectionFeed.append(alertConfirm, editDialog, header);
-
-  console.log(Date.now());
 
   return sectionFeed;
 };
