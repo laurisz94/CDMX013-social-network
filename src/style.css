@@ -8,16 +8,15 @@
    font-size: 1.05rem;
 }
 
-@media only screen and (max-width: 600px) {
    body{
       height: auto;
       width: 100vw;
-      background-image: url(./images/fondo.png);
+      background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.5)), url(./images/backgroundMunchies.jpeg);
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
    }
-   
+
    #logo {
       display: block;
       margin: auto;
@@ -116,6 +115,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-bottom: 50px;
    }
 
    #white-btns1 {
@@ -163,12 +163,14 @@
       justify-content: space-between;
 
    }
+   
    .textPost {
       width: 352px;
       height: 69px;
       margin-top: 35px;
       border-radius: 8px;
       text-align: center;
+      border-style: none;
    }
 
    #button-post {
@@ -183,15 +185,14 @@
 
    .button-image {
       position: absolute;
-
    }
 
    #container-all-post{
       width: auto;
       height: auto;
       margin-bottom: 100px;
-
    }
+
    .containerPost{
       width: 352px;
       height: auto;
@@ -213,27 +214,30 @@
       font-size: 0.85rem;
    }
    
-   nav{
+   #menu{
       width: 100vw;
       height: 69px;
       background:rgba(18, 18, 18, 1);
       display: flex;
+      justify-content: center;
+      align-items: center;
       position: fixed;
       bottom: 0;
    }   
 
    .userEmail {
-      color: aliceblue;
-      align-self: center;
-      display: block;
+      color: white;
+      
    }
 
    #iconLogout{
       width: 70px;
+      height: 70px;
    }
 
    #i-home{
       width: 70px;
+      height: 70px;
    }
 
    .icons-edit {
@@ -336,12 +340,13 @@
       background-color:  rgba(82, 79, 79, 0.75)
    }
 
-/*}
-   
-
- 
-
+   #container-all-post{
+      padding-bottom: 80px;
+   }
 
 
-
-@media only screen and (min-width:1281px) {}
+   @media only screen and (max-width: 600px) { 
+      body{
+         background-position: 60% 0;
+      }    
+}
